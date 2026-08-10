@@ -98,3 +98,8 @@ body{overflow-x:hidden}.mobile-menu{display:none}
 /* Broken chocolate pieces layered behind the feature cookie */
 .cookie-stack{isolation:isolate}.cookie-stack>.cookie-shards-backdrop{position:absolute;z-index:1;left:50%;top:48%;width:132%;height:126%;object-fit:contain;transform:translate(-50%,-50%) rotate(-3deg);filter:drop-shadow(0 15px 12px rgba(83,41,23,.2));opacity:.96}.feature-cookie{position:relative;z-index:2;height:100%;display:flex;align-items:center;justify-content:center}.feature-cookie img{height:100%;width:100%;object-fit:contain}.cookie-stack .melt{z-index:3}
 @media(max-width:640px){.cookie-stack>.cookie-shards-backdrop{width:158%;height:142%;top:47%;transform:translate(-50%,-50%) rotate(-4deg)}.feature-cookie{height:100%}}
+
+/* SVG interface icons only. No emoji glyphs. */
+.finale-button .instagram-icon{width:20px;height:20px;flex:0 0 auto;color:#a15b4b}
+.finale-button b{font-size:0}
+.finale-button b svg{width:15px;height:15px}
