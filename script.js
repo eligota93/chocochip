@@ -1,24 +1,35 @@
-const chocolateBars = [
-  "01-heart-cluster-chocolate.png", "02-abstract-pattern-chocolate.png", "03-yellow-dress-fruit-chocolate.png",
-  "04-woman-strawberry-chocolate.png", "05-colorful-balloon-chocolate.png", "06-classic-balloon-chocolate.png",
-  "07-paris-chocolate.png", "08-decorated-chocolate.png", "09-decorated-chocolate.png", "10-decorated-chocolate.png",
-  "11-decorated-chocolate.png", "12-decorated-chocolate.png", "13-decorated-chocolate.png", "14-decorated-chocolate.png",
-  "15-decorated-chocolate.png", "16-christmas-reindeer-chocolate.png", "17-classic-chocolate.png",
-  "18-classic-chocolate.png", "19-classic-chocolate.png", "20-classic-chocolate.png", "21-geometric-mixed-chocolate.png",
-  "25-fashion-macarons-chocolate.png", "26-sculpted-woman-flowers-chocolate.png", "27-pink-floral-chocolate.png",
-  "28-mint-pink-dress-chocolate.png", "29-yellow-wedding-dress-chocolate.png"
-];
-const track = document.querySelector("#chocolate-track");
-function makeGroup(hidden = false) {
-  const group = document.createElement("div");
-  group.className = "marquee-group";
-  if (hidden) group.setAttribute("aria-hidden", "true");
-  chocolateBars.forEach((file, index) => {
-    const item = document.createElement("div"); item.className = "moving-bar";
-    const image = document.createElement("img"); image.src = `assets/products/${file}`; image.alt = hidden ? "" : `Custom chocolate bar design ${index + 1}`; image.loading = "lazy";
-    item.appendChild(image); group.appendChild(item);
-  });
-  return group;
+const chocolateBars=["01-heart-cluster-chocolate.png","02-abstract-pattern-chocolate.png","03-yellow-dress-fruit-chocolate.png","04-woman-strawberry-chocolate.png","05-colorful-balloon-chocolate.png","06-classic-balloon-chocolate.png","07-paris-chocolate.png","08-decorated-chocolate.png","09-decorated-chocolate.png","10-decorated-chocolate.png","11-decorated-chocolate.png","12-decorated-chocolate.png","13-decorated-chocolate.png","14-decorated-chocolate.png","15-decorated-chocolate.png","16-christmas-reindeer-chocolate.png","17-classic-chocolate.png","18-classic-chocolate.png","19-classic-chocolate.png","20-classic-chocolate.png","21-geometric-mixed-chocolate.png","25-fashion-macarons-chocolate.png","26-sculpted-woman-flowers-chocolate.png","27-pink-floral-chocolate.png","28-mint-pink-dress-chocolate.png","29-yellow-wedding-dress-chocolate.png"];
+
+const translations={
+en:{home:"Home",cookies:"Cookies",chocolates:"Chocolates",customOrders:"Custom orders",contact:"Contact",order:"Order",openNav:"Open navigation",heroScript:"Made fresh for every occasion",heroTitle:"Custom chocolates<br>&amp; cookies",heroButton:"Place a custom order",cookieScript:"Freshly baked, beautifully finished",cookieTitle:"Our Signature Cookies",cookieIntro:"Three flavours. One impossible choice.",eachCookie:"each cookie",productNames:["Striped Cream","Triple Chocolate","Red Velvet"],signatureCookie:"Signature cookie",momentScript:"Your moment, made delicious",momentTitle:"Your idea.<br>Our chocolate.",momentText:"From the colour and theme to every final detail, each chocolate is created around your celebration, not pulled from a shelf.",momentButton:"Start a custom order",melted:"melted<br>inside",featureScript:"Thick, buttery, impossible to forget",featureTitle:"Baked to be<br>remembered",featureText:"Rich chocolate, soft centres and generous toppings. One bite, endless moments.",perCookie:"per cookie",showroomScript:"Every bar tells a different story",showroomTitle:"The Chocolate Showroom",showroomText:"Custom-made for celebrations, gifts and everything in between.",eachChocolate:"each chocolate",create:"Create your own",giftScript:"Unwrap something unforgettable",giftTitle:"Sweet moments,<br>beautifully gifted",giftText:"Choose the colours, theme and flavours. We will turn them into a one-of-a-kind chocolate and cookie gift made especially for your person.",giftButton:"Design a gift",finalScript:"Your sweetest idea starts here",finalTitle:"Let us make something<br>delicious",finalText:"Pre-orders, custom gifts and collaborations are open.",fresh:"Made fresh for every occasion",closed:"Sunday closed"},
+al:{home:"Kryefaqja",cookies:"Biskota",chocolates:"Çokollata",customOrders:"Porosi të personalizuara",contact:"Kontakti",order:"Porosit",openNav:"Hap navigimin",heroScript:"Të freskëta për çdo rast",heroTitle:"Çokollata dhe biskota<br>të personalizuara",heroButton:"Bëj një porosi të personalizuar",cookieScript:"Të pjekura të freskëta, të përfunduara bukur",cookieTitle:"Biskotat tona karakteristike",cookieIntro:"Tri shije. Një zgjedhje e pamundur.",eachCookie:"çdo biskotë",productNames:["Krem me vija","Çokollatë e trefishtë","Red Velvet"],signatureCookie:"Biskotë karakteristike",momentScript:"Momenti yt, i bërë i shijshëm",momentTitle:"Ideja jote.<br>Çokollata jonë.",momentText:"Nga ngjyra dhe tema deri te çdo detaj i fundit, çdo çokollatë krijohet për festën tënde, jo merret nga rafti.",momentButton:"Fillo një porosi të personalizuar",melted:"e shkrirë<br>brenda",featureScript:"E trashë, me gjalpë, e paharrueshme",featureTitle:"E pjekur për t'u<br>mbajtur mend",featureText:"Çokollatë e pasur, brendësi e butë dhe mbushje të bollshme. Një kafshatë, momente pa fund.",perCookie:"për biskotë",showroomScript:"Çdo çokollatë tregon një histori ndryshe",showroomTitle:"Ekspozita e çokollatave",showroomText:"Të personalizuara për festa, dhurata dhe çdo rast tjetër.",eachChocolate:"çdo çokollatë",create:"Krijo tënden",giftScript:"Hap diçka të paharrueshme",giftTitle:"Momente të ëmbla,<br>të dhuruara bukur",giftText:"Zgjidh ngjyrat, temën dhe shijet. Ne do t'i kthejmë në një dhuratë unike me çokollata dhe biskota, të krijuar posaçërisht për personin tënd.",giftButton:"Dizajno një dhuratë",finalScript:"Ideja jote më e ëmbël fillon këtu",finalTitle:"Le të krijojmë diçka<br>të shijshme",finalText:"Porositë paraprake, dhuratat e personalizuara dhe bashkëpunimet janë të hapura.",fresh:"Të freskëta për çdo rast",closed:"Të dielën mbyllur"}
+};
+
+const track=document.querySelector("#chocolate-track");
+function makeGroup(hidden=false){const group=document.createElement("div");group.className="marquee-group";if(hidden)group.setAttribute("aria-hidden","true");chocolateBars.forEach((file,index)=>{const item=document.createElement("div");item.className="moving-bar";const image=document.createElement("img");image.src=`assets/products/${file}`;image.alt=hidden?"":`Custom chocolate bar design ${index+1}`;image.loading="lazy";item.appendChild(image);group.appendChild(item)});return group}
+if(track)track.append(makeGroup(),makeGroup(true));
+
+function text(selector,value){const element=document.querySelector(selector);if(element)element.textContent=value}
+function html(selector,value){const element=document.querySelector(selector);if(element)element.innerHTML=value}
+function textAll(selector,value){document.querySelectorAll(selector).forEach(element=>element.textContent=value)}
+
+function applyLanguage(language){
+ const t=translations[language];
+ const navMap={"#home":t.home,"#cookies":t.cookies,"#chocolates":t.chocolates,"#custom-orders":t.customOrders,"#contact":t.contact};
+ Object.entries(navMap).forEach(([href,label])=>textAll(`.site-header nav a[href="${href}"],.mobile-menu>div a[href="${href}"]`,label));
+ text(".nav-order",t.order);document.querySelector(".mobile-menu summary")?.setAttribute("aria-label",t.openNav);
+ text(".hero-copy .script",t.heroScript);html(".hero-copy h1",t.heroTitle);text(".hero-copy .button",t.heroButton);
+ text(".signature>.script",t.cookieScript);text(".signature>h2",t.cookieTitle);text(".signature>.section-intro",t.cookieIntro);text(".signature .price-banner span",t.eachCookie);
+ document.querySelectorAll(".cookie-only-grid .product-copy h3").forEach((element,index)=>element.textContent=t.productNames[index]);textAll(".cookie-only-grid .product-copy p",t.signatureCookie);
+ text(".personal-copy .script",t.momentScript);html(".personal-copy h2",t.momentTitle);text(".personal-copy>p:not(.script)",t.momentText);text(".personal-copy .button",t.momentButton);
+ html(".melt",t.melted);text(".cookie-feature>div:last-child .script",t.featureScript);html(".cookie-feature>div:last-child h2",t.featureTitle);text(".cookie-feature>div:last-child>p:not(.script)",t.featureText);text(".feature-price span",t.perCookie);
+ text(".occasions>.script",t.showroomScript);text(".occasions>h2",t.showroomTitle);text(".occasions>.section-intro",t.showroomText);text(".chocolate-price span",t.eachChocolate);text(".occasions>.button",t.create);
+ text(".gift-copy .script",t.giftScript);html(".gift-copy h2",t.giftTitle);text(".gift-copy>p:not(.script)",t.giftText);text(".gift-copy .button",t.giftButton);
+ text(".finale-copy .script",t.finalScript);html(".finale-copy h2",t.finalTitle);text(".finale-copy>p:not(.script)",t.finalText);text(".finale-footer p:first-of-type",t.fresh);text(".finale-footer p:last-of-type",t.closed);
+ document.documentElement.lang=language==="al"?"sq":"en";document.title=language==="al"?"ChocoChip Biscuit | Çokollata dhe Biskota":"ChocoChip Biscuit | Custom Chocolates & Cookies";
+ text(".language-switch .current",language==="al"?"AL":"EN");text(".language-switch .next",language==="al"?"EN":"AL");document.querySelector(".language-switch")?.setAttribute("aria-label",language==="al"?"Kalo faqen në anglisht":"Switch website to Albanian");localStorage.setItem("chocochip-language",language);
 }
-if (track) track.append(makeGroup(), makeGroup(true));
-document.querySelectorAll(".mobile-menu a").forEach((link) => link.addEventListener("click", () => link.closest("details")?.removeAttribute("open")));
+
+let language=localStorage.getItem("chocochip-language")==="al"?"al":"en";applyLanguage(language);
+document.querySelector(".language-switch")?.addEventListener("click",()=>{language=language==="en"?"al":"en";applyLanguage(language)});
+document.querySelectorAll(".mobile-menu a").forEach(link=>link.addEventListener("click",()=>link.closest("details")?.removeAttribute("open")));

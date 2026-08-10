@@ -1,6 +1,8 @@
 # ChocoChip Biscuit
 
-Static, mobile-ready ChocoChip Biscuit website for GitHub Pages. The website contains no emoji characters. All interface symbols use SVG icons.
+Static, mobile-ready website for GitHub Pages. There are no emoji characters; interface symbols use SVG icons.
+
+Prices: cookies are 2 EUR each and chocolates are 7 EUR each. The site includes a complete English and Albanian language switcher.
 
 ## Publish
 
